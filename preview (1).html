@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1016" />
+  <meta name="description" content="Curt Kyan P. Osorio — backend developer and tester building practical, reliable digital systems." />
+  <title>Curt Kyan P. Osorio | Developer Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #0b1016;
+      --surface: #111923;
+      --surface-2: #151f2a;
+      --text: #f2f5f7;
+      --muted: #a4b0bd;
+      --line: rgba(222, 234, 243, .12);
+      --accent: #c2f970;
+      --accent-ink: #14200a;
+      --max: 1120px;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(
+          ellipse at 82% 0%,
+          rgba(194, 249, 112, .08),
+          transparent 32rem
+        ),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 18px;
+      padding: 10px 14px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-radius: 10px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 18px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 16, 22, .86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-size: .87rem;
+      letter-spacing: -.06em;
+    }
+
+    .brand-text {
+      font-size: .98rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: var(--muted);
+      font-size: .89rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+    }
+
+    .nav-contact {
+      border: 1px solid rgba(194, 249, 112, .5);
+      padding: 9px 15px;
+      border-radius: 999px;
+      color: var(--accent) !important;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    /* Hero section */
+
+    .hero {
+      padding: 88px 0 86px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+      align-items: center;
+      gap: clamp(38px, 7vw, 90px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .73rem;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 27px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 20px 0;
+      font-size: clamp(3rem, 6.7vw, 5.65rem);
+      line-height: .98;
+      letter-spacing: -.075em;
+      max-width: 760px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.13rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 47px;
+      padding: 12px 18px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      font-size: .91rem;
+      font-weight: 750;
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, .02);
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(194, 249, 112, .55);
+    }
+
+    .hero-meta {
+      margin-top: 35px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(194, 249, 112, .12);
+    }
+
+    .hero-visual {
+      position: relative;
+      max-width: 370px;
+      justify-self: end;
+      width: 100%;
+    }
+
+    .portrait-frame {
+      position: relative;
+      padding: 13px;
+      border: 1px solid rgba(194, 249, 112, .28);
+      border-radius: 32px;
+      background: linear-gradient(
+        145deg,
+        rgba(194, 249, 112, .1),
+        rgba(255, 255, 255, .015) 45%
+      );
+      transform: rotate(2deg);
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 22%;
+      border-radius: 22px;
+      background: #f7f7f7;
+      filter: saturate(.96);
+    }
+
+    .portrait-note {
+      position: absolute;
+      left: -35px;
+      bottom: 28px;
+      padding: 15px 17px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #111923;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .25);
+      transform: rotate(-2deg);
+    }
+
+    .portrait-note strong {
+      display: block;
+      font-size: .9rem;
+    }
+
+    .portrait-note span {
+      display: block;
+      color: var(--muted);
+      font-size: .77rem;
+    }
+
+    .floating-tag {
+      position: absolute;
+      top: 38px;
+      right: -24px;
+      padding: 10px 13px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-radius: 12px;
+      font-size: .78rem;
+      font-weight: 850;
+      transform: rotate(4deg);
+    }
+
+    /* General sections */
+
+    .section {
+      padding: 82px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+
+    .section-kicker {
+      margin-bottom: 9px;
+      color: var(--accent);
+      font-size: .74rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4.5vw, 3.15rem);
+      line-height: 1.1;
+      letter-spacing: -.06em;
+    }
+
+    .section-intro {
+      max-width: 460px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    /* Profile */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: clamp(24px, 4vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(
+        140deg,
+        rgba(255, 255, 255, .035),
+        rgba(255, 255, 255, .012)
+      );
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .mini-label {
+      margin-bottom: 17px;
+      color: var(--text);
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 800;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill {
+      padding: 8px 12px;
+      border: 1px solid rgba(194, 249, 112, .2);
+      border-radius: 999px;
+      color: #e4f4cc;
+      background: rgba(194, 249, 112, .055);
+      font-size: .84rem;
+      font-weight: 650;
+    }
+
+    .detail-line {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .detail-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: rgba(194, 249, 112, .1);
+      color: var(--accent);
+      font-size: .9rem;
+    }
+
+    /* Education */
+
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding: 26px 27px 27px;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 55px;
+      left: 27px;
+      top: 0;
+      background: var(--accent);
+    }
+
+    .year {
+      color: var(--accent);
+      font-size: .77rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+
+    .timeline-card h3 {
+      margin: 15px 0 8px;
+      font-size: 1.2rem;
+      letter-spacing: -.03em;
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .school {
+      margin-top: 15px !important;
+      margin-bottom: 10px !important;
+      color: var(--text) !important;
+      font-weight: 700;
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(194, 249, 112, .35);
+      background: #131e28;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 27px;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 13px;
+      color: var(--accent);
+      border: 1px solid rgba(194, 249, 112, .2);
+      background: rgba(194, 249, 112, .06);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .project-year {
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    .project-card h3 {
+      margin-bottom: 4px;
+      font-size: 1.15rem;
+      letter-spacing: -.035em;
+    }
+
+    .project-role {
+      color: var(--accent);
+      font-size: .79rem;
+      font-weight: 750;
+      margin-bottom: 13px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 22px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+    }
+
+    .project-tags span {
+      padding: 5px 8px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, .055);
+      color: #d4dce3;
+      font-size: .7rem;
+    }
+
+    /* Interests */
+
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .interest-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .interest-emoji {
+      display: grid;
+      place-items: center;
+      flex: 0 0 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--surface-2);
+      font-size: 1.35rem;
+    }
+
+    .interest-card strong {
+      display: block;
+      font-size: .94rem;
+    }
+
+    .interest-card span:last-child {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    /* Certifications */
+
+    .cert-panel {
+      border: 1px solid rgba(194, 249, 112, .25);
+      border-radius: var(--radius);
+      background: linear-gradient(
+        120deg,
+        rgba(194, 249, 112, .06),
+        rgba(255, 255, 255, .012)
+      );
+      padding: clamp(24px, 4.5vw, 38px);
+    }
+
+    .cert-list {
+      list-style: none;
+      margin: 27px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+
+    .cert-list li {
+      position: relative;
+      padding: 14px 0 14px 27px;
+      border-bottom: 1px solid var(--line);
+      color: #e8edf1;
+      font-size: .91rem;
+    }
+
+    .cert-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 13px;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .cert-list li:nth-last-child(-n+2) {
+      border-bottom: 0;
+    }
+
+    /* Contact */
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .contact-copy {
+      color: var(--muted);
+      max-width: 440px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+    }
+
+    .contact-item .detail-icon {
+      flex: 0 0 40px;
+      height: 40px;
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    .contact-item strong {
+      display: block;
+      overflow-wrap: anywhere;
+      font-size: .9rem;
+      font-weight: 650;
+    }
+
+    .contact-item:hover {
+      border-color: rgba(194, 249, 112, .36);
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 20px;
+    }
+
+    .back-top {
+      color: var(--accent);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .hero {
+        padding: 68px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 32px;
+      }
+
+      .portrait-note {
+        left: -12px;
+      }
+
+      .floating-tag {
+        right: -8px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .project-card:last-child {
+        grid-column: 1 / -1;
+        min-height: 250px;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(var(--max), calc(100% - 30px));
+      }
+
+      .nav {
+        min-height: 67px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 15px;
+        right: 15px;
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #111923;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, .3);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 12px;
+        border-radius: 9px;
+      }
+
+      .nav-contact {
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      .hero {
+        padding: 55px 0 62px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 15vw, 4.8rem);
+      }
+
+      .hero-visual {
+        max-width: 310px;
+        justify-self: center;
+        margin: 0 14px 12px;
+      }
+
+      .portrait-note {
+        left: -18px;
+      }
+
+      .floating-tag {
+        right: -12px;
+      }
+
+      .section {
+        padding: 62px 0;
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 24px;
+      }
+
+      .section-intro {
+        margin-top: 14px;
+      }
+
+      .about-grid,
+      .timeline,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid,
+      .interests-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card,
+      .project-card:last-child {
+        min-height: auto;
+        grid-column: auto;
+      }
+
+      .project-top {
+        margin-bottom: 19px;
+      }
+
+      .cert-list {
+        grid-template-columns: 1fr;
+      }
+
+      .cert-list li:nth-last-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cert-list li:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Curt Kyan P. Osorio home">
+        <span class="brand-mark">CO</span>
+        <span class="brand-text">
+          Curt Kyan Osorio<span style="color:var(--accent)">.</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >☰</button>
+
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="#profile">Profile</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Projects</a>
+        <a href="#hobbies">Interests</a>
+        <a href="#certifications">Certifications</a>
+        <a class="nav-contact" href="#contact">Contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Backend Developer · Software Tester</div>
+
+          <h1>
+            Turning ideas into <span>working systems.</span>
+          </h1>
+
+          <p class="hero-copy">
+            I’m Curt Kyan P. Osorio. I enjoy working behind the scenes of
+            digital products—building backend functionality, organizing
+            the logic that powers an application, and testing systems to
+            make sure they behave as expected. My project experience
+            includes banking, hotel management, and community recordkeeping
+            systems.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#experience">
+              Explore my projects <span aria-hidden="true">↘</span>
+            </a>
+            <a class="button button-secondary" href="#contact">
+              Get in touch <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span>
+              <i class="status-dot" aria-hidden="true"></i>
+              Backend development & testing
+            </span>
+            <span>Based in Balagtas, Bulacan, Philippines</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Portrait of Curt Kyan P. Osorio">
+          <div class="portrait-frame">
+            <img
+              src="curt-kyan-osorio.jpg"
+              alt="Portrait of Curt Kyan P. Osorio"
+            />
+          </div>
+
+          <div class="floating-tag">Think it through. Build it well.</div>
+
+          <div class="portrait-note">
+            <strong>Backend · Testing · Systems</strong>
+            <span>Built through hands-on projects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <section class="section" id="profile">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">01 / Profile</div>
+            <h2>How I approach technology.</h2>
+          </div>
+
+          <p class="section-intro">
+            I’m drawn to the part of development that makes software work:
+            its logic, data, and reliability.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel">
+            <div class="mini-label">What drives my work</div>
+
+            <p>
+              I like solving problems by breaking them into smaller,
+              logical steps. In development, I’m especially interested
+              in the backend—the structure and processing that turn
+              user actions into useful results.
+            </p>
+
+            <p>
+              I’ve taken on backend development responsibilities across
+              different project types, and my work on the Barangay Pajo
+              Digital Record System also includes testing. I see testing
+              as an important part of building software: a feature should
+              not only exist, it should work reliably.
+            </p>
+
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">⌘</span>
+              <span>
+                <strong style="color:var(--text)">My working mindset</strong>
+                <br />
+                Think logically, keep information organized, and test
+                the result.
+              </span>
+            </div>
+          </article>
+
+          <aside class="panel">
+            <div class="mini-label">Areas I work in</div>
+
+            <div class="skill-list" aria-label="Development and testing focus areas">
+              <span class="skill">Backend Development</span>
+              <span class="skill">Application Logic</span>
+              <span class="skill">Digital Records</span>
+              <span class="skill">Software Testing</span>
+              <span class="skill">System Development</span>
+              <span class="skill">Problem Solving</span>
+            </div>
+
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">◎</span>
+              <span>
+                <strong style="color:var(--text)">What I value</strong>
+                <br />
+                Reliable functionality, structured information, and
+                careful testing.
+              </span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">02 / Education</div>
+            <h2>My educational background.</h2>
+          </div>
+
+          <p class="section-intro">
+            My education has helped me build a foundation for continued
+            learning, information technology, software development,
+            and practical project work.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <!-- College -->
+          <article class="timeline-card">
+            <div class="year">2024 — PRESENT</div>
+
+            <h3>
+              Bachelor of Science in Information Technology
+            </h3>
+
+            <p class="school">Bulacan State University</p>
+
+            <p>
+              Currently pursuing a Bachelor of Science in Information
+              Technology at Bulacan State University, developing my
+              knowledge and skills in software development, backend
+              programming, database management, and information systems.
+            </p>
+          </article>
+
+          <!-- High School -->
+          <article class="timeline-card">
+            <div class="year">2020 — 2024</div>
+
+            <h3>Guiguinto National Vocational High School</h3>
+
+            <p class="school">Guiguinto, Bulacan</p>
+
+            <p>
+              I studied at Guiguinto National Vocational High School
+              from 2020 to 2024, building the foundation for my
+              continued learning and practical project work.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">03 / Projects</div>
+            <h2>Systems I’ve worked on.</h2>
+          </div>
+
+          <p class="section-intro">
+            A selection of projects where I contributed to backend
+            development, with software testing included in my 2026
+            barangay records project.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon" aria-hidden="true">BS</div>
+              <span class="project-year">2025</span>
+            </div>
+
+            <h3>Banko Sentral ng Bulacan</h3>
+
+            <div class="project-role">Backend Developer</div>
+
+            <p>
+              Contributed to the backend development of a banking
+              system project, focusing on the application logic and
+              data handling behind its features.
+            </p>
+
+            <div class="project-tags">
+              <span>Backend</span>
+              <span>System Development</span>
+              <span>Data Handling</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon" aria-hidden="true">HM</div>
+              <span class="project-year">2025</span>
+            </div>
+
+            <h3>Hotel Management System</h3>
+
+            <div class="project-role">Backend Developer</div>
+
+            <p>
+              Worked on the backend of a hotel management application,
+              helping implement the server-side functionality that
+              supports the system.
+            </p>
+
+            <div class="project-tags">
+              <span>Backend</span>
+              <span>Application Logic</span>
+              <span>Management System</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon" aria-hidden="true">BP</div>
+              <span class="project-year">2026</span>
+            </div>
+
+            <h3>Barangay Pajo Digital Record System</h3>
+
+            <div class="project-role">Backend Developer & Tester</div>
+
+            <p>
+              Contributed to backend development and tested the
+              digital records system to check that its functionality
+              worked as expected.
+            </p>
+
+            <div class="project-tags">
+              <span>Backend</span>
+              <span>Digital Records</span>
+              <span>Testing</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interests -->
+    <section class="section" id="hobbies">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">04 / Beyond the screen</div>
+            <h2>Interests that keep me moving.</h2>
+          </div>
+
+          <p class="section-intro">
+            I enjoy a mix of digital competition, endurance challenges,
+            and playing sports with other people.
+          </p>
+        </div>
+
+        <div class="interests-grid">
+
+          <article class="interest-card">
+            <span class="interest-emoji" aria-hidden="true">🎮</span>
+            <span>
+              <strong>Video Games</strong>
+              <span>Challenge, strategy, and downtime</span>
+            </span>
+          </article>
+
+          <article class="interest-card">
+            <span class="interest-emoji" aria-hidden="true">🏊</span>
+            <span>
+              <strong>Triathlon & Endurance Sports</strong>
+              <span>Discipline, stamina, and steady progress</span>
+            </span>
+          </article>
+
+          <article class="interest-card">
+            <span class="interest-emoji" aria-hidden="true">🏀</span>
+            <span>
+              <strong>Basketball</strong>
+              <span>Recreation, teamwork, and competition</span>
+            </span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications: preserved -->
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">05 / Certifications</div>
+            <h2>Certifications earned.</h2>
+          </div>
+
+          <p class="section-intro">
+            Networking, cybersecurity, Linux, operating systems,
+            and computer hardware fundamentals.
+          </p>
+        </div>
+
+        <div class="cert-panel">
+          <div class="mini-label">Cisco certifications</div>
+
+          <ul class="cert-list">
+            <li>Cisco Network Addressing and Basic Troubleshooting</li>
+            <li>Cisco Introduction to Cybersecurity</li>
+            <li>Cisco Networking Devices and Initial Configuration</li>
+            <li>Cisco Linux Essentials</li>
+            <li>Cisco Linux Unhatched</li>
+            <li>Cisco Operating Systems Basics</li>
+            <li>Cisco Computer Hardware Basics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container contact-wrap">
+        <div>
+          <div class="section-kicker">06 / Contact</div>
+
+          <h2>Let’s connect.</h2>
+
+          <p class="contact-copy" style="margin-top:18px">
+            Interested in discussing a project or connecting
+            professionally? Contact me through email or phone.
+          </p>
+
+          <a class="button button-primary"
+             href="mailto:osoriocurtkyan08@gmail.com">
+            Send me an email <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="contact-list">
+          <a class="contact-item"
+             href="mailto:osoriocurtkyan08@gmail.com">
+            <span class="detail-icon" aria-hidden="true">✉</span>
+            <span>
+              <small>Email</small>
+              <strong>osoriocurtkyan08@gmail.com</strong>
+            </span>
+          </a>
+
+          <a class="contact-item" href="tel:+639228070506">
+            <span class="detail-icon" aria-hidden="true">☎</span>
+            <span>
+              <small>Phone</small>
+              <strong>09228070506</strong>
+            </span>
+          </a>
+
+          <div class="contact-item">
+            <span class="detail-icon" aria-hidden="true">⌖</span>
+            <span>
+              <small>Location</small>
+              <strong>Borol 1st, Balagtas, Bulacan, Philippines</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Curt Kyan P. Osorio. Built with care.</span>
+      <a class="back-top" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Mobile navigation -->
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+      );
+
+      menuButton.textContent = isOpen ? '✕' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation menu');
+        menuButton.textContent = '☰';
+      });
+    });
+  </script>
+</body>
+</html>
